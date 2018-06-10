@@ -36,7 +36,7 @@
 #define REG_INPUT_START   				(0)
 #define REG_INPUT_NREGS   				(20U)
 
-#define REG_HOLDING_START 				0
+#define REG_HOLDING_START 				1
 #define REG_HOLDING_NREGS 				200
 
 // Indices for outputs to Modbus
