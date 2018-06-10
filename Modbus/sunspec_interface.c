@@ -7,27 +7,14 @@
 
 #include "sunspec_interface.h"
 #include "sunspec_model.h"
-#include "mb_interface.h"
-#include "math.h"
-union{
-    SunSpecModbusModelMap_S *pSunSpecModbusModelMap;
-    USHORT *pusRegHoldingBuf;
-}SunSpec;
+#include "sunspec_utilities.h"
 
-void f_update(suns_uint16 *point, sunssf *scaling_factor, float value){
-    *point = value*pow(10,(*scaling_factor*(-1)));
-}
-
-void u32_update(suns_uint32 *point, suns_uint32 value){
-    suns_uint32 temp_val;
-    temp_val = ((value & 0xFFFF) << 16) | ((value & 0xFFFF0000) >> 16);
-    *point = temp_val;
-}
 void suns_model_update(){
-    StandardModel_S * pStandardModel = (StandardModel_S*)&usRegHoldingBuf[70];
-    u32_update(&pStandardModel->Vbat,142);
-    u32_update(&pStandardModel->Vldc,153);
-    u32_update(&pStandardModel->Vhdc,191);
+    StandardModel_S * pStandardModel = (StandardModel_S*)&usRegHoldingBuf[STANDARD_MODEL_OFFSET];
+    pStandardModel->E3_SF = SUNS_SF(-3);
+    pStandardModel->Vbat = SUNS_F32(142.891,pStandardModel->E3_SF);
+    pStandardModel->Vldc = SUNS_F32(153.204,pStandardModel->E3_SF);
+    pStandardModel->Vhdc = SUNS_F32(191.663,pStandardModel->E3_SF);
 }
 
 void suns_init(){
