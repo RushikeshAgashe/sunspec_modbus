@@ -29,15 +29,13 @@
  */
 
 /* ----------------------- System includes ----------------------------------*/
+#include <modbus/include/mb.h>
+#include <modbus/include/mbproto.h>
+#include <modbus/include/port.h>
 #include "stdlib.h"
 #include "string.h"
 
 /* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbproto.h"
 
 /* ----------------------- Defines ------------------------------------------*/
 #define BITS_UCHAR      8U

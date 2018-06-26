@@ -20,14 +20,16 @@
  */
 
 /* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbport.h"
-#include "mbrtu.h"
+#include <modbus/include/mb.h>
+#include <modbus/include/mbport.h>
+#include <modbus/include/port.h>
+#include <modbus/rtu/mbrtu.h>
 /* ----------------------- Serial Port --------------------------------------*/
-volatile struct SCI_REGS* sci_regs_ptr = &ScibRegs;
+#if SCI_PORT == SCI_A
+    volatile struct SCI_REGS* sci_regs_ptr = &SciaRegs;
+#elif SCI_PORT == SCI_B
+    volatile struct SCI_REGS* sci_regs_ptr = &ScibRegs;
+#endif
 
 /* ----------------------- Defines ------------------------------------------*/
 
@@ -80,16 +82,22 @@ xMBPortSerialInit(UCHAR ucPort, ULONG ulBaudRate, UCHAR ucDataBits, eMBParity eP
 BOOL
 xMBPortSerialPutByte( CHAR ucByte )
 {
-
-	ScibRegs.SCITXBUF = ucByte;
+#if SCI_PORT == SCI_A
+    SciaRegs.SCITXBUF = ucByte;
+#elif SCI_PORT == SCI_B
+    ScibRegs.SCITXBUF = ucByte;
+#endif
     return TRUE;
 }
 /*************************************************************************/
 BOOL
 xMBPortSerialGetByte( CHAR * pucByte )
 {
-
+#if SCI_PORT == SCI_A
+    *pucByte = SciaRegs.SCIRXBUF.all;
+#elif SCI_PORT == SCI_B
     *pucByte = ScibRegs.SCIRXBUF.all;
+#endif
     return TRUE;
 }
 
@@ -97,7 +105,6 @@ xMBPortSerialGetByte( CHAR * pucByte )
 interrupt void SciRxIsrHandler(void)
 {
 	pxMBFrameCBByteReceived(  );
-	GpioDataRegs.GPASET.bit.GPIO31 = 1; //LED2 toggle
 	PieCtrlRegs.PIEACK.all |= PIEACK_GROUP9;
 }// End of SciRxIsrHandler
 
@@ -107,7 +114,6 @@ interrupt void SciRxIsrHandler(void)
 interrupt void SciTxIsrHandler(void)
 {
 	pxMBFrameCBTransmitterEmpty();
-	GpioDataRegs.GPBTOGGLE.bit.GPIO34 = 1; //LED2 toggle
 	PieCtrlRegs.PIEACK.all |= PIEACK_GROUP9;
 }// End of SciTxIsrHandler
 

@@ -20,11 +20,9 @@
  */
 
 /* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbport.h"
+#include <modbus/include/mb.h>
+#include <modbus/include/mbport.h>
+#include <modbus/include/port.h>
 /* --------------------------------------------------------------------------*/
 #pragma CODE_SECTION(vMBPortTimersEnable, "ramfuncs");
 #pragma CODE_SECTION(CpuTimer0IsrHandler, "ramfuncs");

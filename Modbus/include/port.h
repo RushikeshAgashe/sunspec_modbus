@@ -27,7 +27,7 @@
 #include "DSP28x_Project.h"
 #include "stdbool.h"
 #include "assert.h"
-#include "hal_sci.h"
+#include "../../modbus/include/hal_sci.h"
 #if defined (__GNUC__)
 #include <signal.h>
 #endif
@@ -65,6 +65,10 @@ typedef int32 LONG;
 #endif
 
 #endif
+
+#define SCI_A       0
+#define SCI_B       1
+#define SCI_PORT  SCI_A
 
 #define ENABLED		TRUE
 #define DISABLED 	FALSE

@@ -4,8 +4,8 @@
  *  Created on: May 28, 2018
  *      Author: Rushikesh
  */
-#include "sunspec_model.h"
-#include "sunspec_utilities.h"
+#include <include/sunspec_model.h>
+#include <include/sunspec_utilities.h>
 
 static void suns_common_model_init(void){
     CommonModel_S * pCommonModel = (CommonModel_S *)&usRegHoldingBuf[COMMON_MODEL_OFFSET];

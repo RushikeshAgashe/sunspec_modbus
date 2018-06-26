@@ -8,7 +8,7 @@
 #ifndef SUNSPEC_MODEL_H_
 #define SUNSPEC_MODEL_H_
 #include <stdint.h>
-#include "mb_interface.h"
+#include "../modbus/include/mb_interface.h"
 
 /* Notes:
  * ~~~~~~~~~~~~ SUNSPEC MODBUS MODEL MAP ~~~~~~~~~~~~~
@@ -26,7 +26,7 @@
  *      |           -Device Version(Optional)   |
  *      |           -Device Serial Number       |
  *      |           -Device Address             |
- *      |           -32-bit Alignment Pad       |
+ *      |           -Pad for 32-bit Alignment   |
  *       ---------------------------------------
  *      |            STANDARD MODEL             |
  *      |                                       |
@@ -73,14 +73,14 @@
 #define COMMON_MODEL_ID             1
 #define COMMON_MODEL_PDU_LENGTH     66
 #define COMMON_MODEL_DEVICE_ADDRESS 1
-#define SUNS_MANUFACTURER           "<Manufacturer Name>"
-#define SUNS_MODEL                  "<Model Name>"
-#define SUNS_VERSION                "<Version Number>"
-#define SUNS_SERIAL_NUMBER          "<Serial Number>"
+#define SUNS_MANUFACTURER           "Manufacturer Name"
+#define SUNS_MODEL                  "Model Name"
+#define SUNS_VERSION                "Version Number"
+#define SUNS_SERIAL_NUMBER          "Serial Number"
 
 #define STANDARD_MODEL_OFFSET       (COMMON_MODEL_OFFSET + COMMON_MODEL_PDU_LENGTH + HEADER_LENGTH)
 #define STANDARD_MODEL_ID           64161   /* Example */
-#define STANDARD_MODEL_PDU_LENGTH   8
+#define STANDARD_MODEL_PDU_LENGTH   20
 
 #define END_MODEL_OFFSET            (STANDARD_MODEL_OFFSET + STANDARD_MODEL_PDU_LENGTH + HEADER_LENGTH)
 #define END_MODEL_ID                0xFFFF
@@ -111,6 +111,12 @@ typedef struct StandardModel{
     suns_uint32 Vbat;
     suns_uint32 Vldc;
     suns_uint32 Vhdc;
+    suns_uint32 Vref;
+    suns_int32 dummy0;
+    suns_uint32 dummy1;
+    suns_uint32 dummy2;
+    suns_uint32 dummy3;
+    suns_uint32 dummy4;
     suns_int16 E3_SF;
     suns_uint16 pad;
 }StandardModel_S;

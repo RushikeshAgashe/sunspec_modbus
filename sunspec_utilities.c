@@ -5,9 +5,9 @@
  *      Author: Rushikesh
  */
 
+#include <include/sunspec_utilities.h>
 #include <string.h>
 #include "math.h"
-#include "sunspec_utilities.h"
 
 void suns_string_fill(char* dest_str, const char* base_str){
     unsigned int *ptr = (unsigned int*)dest_str;

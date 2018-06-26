@@ -20,13 +20,10 @@
  */
 
 /* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbport.h"
-#include "mb_interface.h"
+#include <modbus/include/mb.h>
+#include <modbus/include/mb_interface.h>
+#include <modbus/include/mbport.h>
+#include <modbus/include/port.h>
 #include "string.h"
 
 /* ----------------------- Defines ------------------------------------------*/
@@ -54,7 +51,6 @@ USHORT   usRegHoldingBuf[REG_HOLDING_NREGS];
 eMBErrorCode    eStatus;
 
 // Outputs to modbus
-volatile unsigned int PWM_Duty = 10;
 
 /* ----------------------- Start implementation -----------------------------*/
 

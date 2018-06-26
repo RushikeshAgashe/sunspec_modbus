@@ -1,7 +1,7 @@
 /*
  * mb_interface.h
  */
-#include "mb.h"
+#include "../../modbus/include/mb.h"
 
 #ifndef MB_INTERFACE_H_
 #define MB_INTERFACE_H_

@@ -29,19 +29,17 @@
  */
 
 /* ----------------------- System includes ----------------------------------*/
+#include <modbus/include/mb.h>
+#include <modbus/include/mbframe.h>
+#include <modbus/include/mbport.h>
+#include <modbus/include/port.h>
+#include <modbus/rtu/mbcrc.h>
+#include <modbus/rtu/mbcrc.h>
+#include <modbus/rtu/mbrtu.h>
 #include "stdlib.h"
 #include "string.h"
 
 /* ----------------------- Platform includes --------------------------------*/
-#include "port.h"
-
-/* ----------------------- Modbus includes ----------------------------------*/
-#include "mb.h"
-#include "mbrtu.h"
-#include "mbframe.h"
-
-#include "mbcrc.h"
-#include "mbport.h"
 
 /*------------------------Pragmas--------------------------------------------*/
 #pragma CODE_SECTION(xMBRTUReceiveFSM, "ramfuncs");

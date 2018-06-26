@@ -1,4 +1,4 @@
-#include "hal_sci.h"
+#include <modbus/include/hal_sci.h>
 
 #define LSPCLK 	37500000
 

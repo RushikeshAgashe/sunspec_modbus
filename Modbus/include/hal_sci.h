@@ -2,7 +2,7 @@
 #define _HAL_SCI_H
 
 
-#include "port.h"
+#include "../../modbus/include/port.h"
 #include "DSP28x_Project.h"
 #include "stdbool.h"
 
