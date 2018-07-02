@@ -68,7 +68,7 @@ typedef int32 LONG;
 
 #define SCI_A       0
 #define SCI_B       1
-#define SCI_PORT  SCI_A
+#define SCI_PORT  SCI_B
 
 #define ENABLED		TRUE
 #define DISABLED 	FALSE

@@ -63,6 +63,23 @@
  * Model_Length = 0. It denotes the end of the SunSpec Modbus Map.
  * Every SunSpec compliant device must have this as the last model.
  *
+ *
+ *Example Standard Model Configuration:
+ * #define STANDARD_MODEL_PDU_LENGTH   8
+ * typedef struct StandardModel{
+ *   suns_uint16 ID;
+ *   suns_uint16 L;
+ *   suns_uint32 dummy0;
+ *   suns_uint32 dummy1;
+ *   suns_uint32 dummy2;
+ *   suns_int16 dummy_sf;
+ *   suns_uint16 pad;
+ * }StandardModel_S;
+ *
+ * NOTE:
+ * Size of every model must be an even number. Use a 16-bit pad if required to
+ * make the size even.(This is required to maintain 32-bit alignment)
+ *
 */
 
 #define SUNSID                      0x53756e53
@@ -79,8 +96,8 @@
 #define SUNS_SERIAL_NUMBER          "Serial Number"
 
 #define STANDARD_MODEL_OFFSET       (COMMON_MODEL_OFFSET + COMMON_MODEL_PDU_LENGTH + HEADER_LENGTH)
-#define STANDARD_MODEL_ID           64161   /* Example */
-#define STANDARD_MODEL_PDU_LENGTH   20
+#define STANDARD_MODEL_ID           64161   /* Change as needed */
+#define STANDARD_MODEL_PDU_LENGTH   0       /* Change as needed */
 
 #define END_MODEL_OFFSET            (STANDARD_MODEL_OFFSET + STANDARD_MODEL_PDU_LENGTH + HEADER_LENGTH)
 #define END_MODEL_ID                0xFFFF
@@ -108,17 +125,9 @@ typedef struct CommonModel{
 typedef struct StandardModel{
     suns_uint16 ID;
     suns_uint16 L;
-    suns_uint32 Vbat;
-    suns_uint32 Vldc;
-    suns_uint32 Vhdc;
-    suns_uint32 Vref;
-    suns_int32 dummy0;
-    suns_uint32 dummy1;
-    suns_uint32 dummy2;
-    suns_uint32 dummy3;
-    suns_uint32 dummy4;
-    suns_int16 E3_SF;
-    suns_uint16 pad;
+
+    /* Add model points here */
+
 }StandardModel_S;
 
 typedef struct EndModel{
@@ -133,5 +142,5 @@ typedef struct SunSpecModbusModelMap{
     EndModel_S EndModel;
 }SunSpecModbusModelMap_S;
 
-void suns_model_init();
+void suns_model_init(void);
 #endif /* SUNSPEC_H_ */

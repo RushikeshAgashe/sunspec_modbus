@@ -8,8 +8,10 @@
 #ifndef MODBUS_SUNSPEC_INTERFACE_H_
 #define MODBUS_SUNSPEC_INTERFACE_H_
 
-void suns_init();
-void suns_model_default_init();
-void suns_model_update();
-void suns_poll();
+#define BUADRATE    19200
+#define SLAVE_ID    1
+
+void suns_init(void);
+void suns_model_update(void);
+void suns_poll(void);
 #endif /* MODBUS_SUNSPEC_INTERFACE_H_ */
