@@ -72,7 +72,7 @@
  *   suns_uint32 dummy0;
  *   suns_uint32 dummy1;
  *   suns_uint32 dummy2;
- *   suns_int16 dummy_sf;
+ *   sunssf dummy_sf;
  *   suns_uint16 pad;
  * }StandardModel_S;
  *
