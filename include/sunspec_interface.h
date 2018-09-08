@@ -12,6 +12,7 @@
 #define SLAVE_ID    1
 
 void suns_init(void);
+void suns_model_default_init(void);
 void suns_model_update(void);
 void suns_poll(void);
 #endif /* MODBUS_SUNSPEC_INTERFACE_H_ */

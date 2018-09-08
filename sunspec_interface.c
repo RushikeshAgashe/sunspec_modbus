@@ -38,6 +38,11 @@
  * of this file.
  */
 
+void suns_model_default_init(){
+    StandardModel_S * pStandardModel = (StandardModel_S*)&usRegHoldingBuf[STANDARD_MODEL_OFFSET];
+    /*Initialize default values of data points here*/
+}
+
 void suns_model_update(void){
     StandardModel_S * pStandardModel = (StandardModel_S*)&usRegHoldingBuf[STANDARD_MODEL_OFFSET];
     /* Update MODBUS registers here */

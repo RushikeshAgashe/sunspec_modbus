@@ -32,7 +32,7 @@ static void suns_end_model_init(void){
 
 void suns_model_init(void){
     SunSpecModbusModelMap_S * pSunSpecModbusModelMap = (SunSpecModbusModelMap_S *)&usRegHoldingBuf[0];
-    pSunSpecModbusModelMap->sunspec_id = SUNS_U32(SUNSID);
+    pSunSpecModbusModelMap->sunspec_id = SUNS_U32_WRITE(SUNSID);
     suns_common_model_init();
     suns_standard_model_init();
     suns_end_model_init();
